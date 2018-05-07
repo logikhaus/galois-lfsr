@@ -5,7 +5,6 @@ This project implements the Galois Linear-feedback Shift Register (LFSR) in VHDL
 
 For example, to create an LFSR with a polynomial of x^8 + x^2 + x + 1, all you have to do is specify a tap vector of (0,1,2,8), i.e. register outputs 0, 1, 2, and 8 are tapped. After specifying the tap vector with the correct tap locations, simply map the vector to the LFSR instance, as follows:
 
-	<code>
 	/* user.vhdl example file. */
 	i_lfsr: entity work.lfsr(rtl) generic map(
 		taps => (
@@ -15,7 +14,6 @@ For example, to create an LFSR with a polynomial of x^8 + x^2 + x + 1, all you h
 		)
 	)
 	port map(...);
-	</code>
 
 Note that the design assumes the largest tap location is fed back to all the previous taps, by means of connecting to the inputs of each XOR gate of previous taps.
 
@@ -32,9 +30,7 @@ This design synthesises in Quartus. In the coming weeks, we will be verifying th
 
 Note that although you set the VHDL-2008 option in Quartus, it doesn't yet support boolean_vector and integer_vector. So we need to add these definitions for synthesis. You can find them in a separate file (packages/pkg-types.vhdl):
 
-	<code>
 	type boolean_vector is array(natural range <>) of boolean;
 	type integer_vector is array(natural range <>) of integer;
-	</code>
 
 These VHDL-2008 additions are very useful, so request your tool vendor for this support, if they haven't already.
